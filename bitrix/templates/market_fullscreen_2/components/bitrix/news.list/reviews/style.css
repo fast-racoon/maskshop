@@ -1,0 +1,111 @@
+@font-face {
+font-family: HelveticaLight; /* ָלÿ רנטפעא */
+src: url('/bitrix/templates/.default/fonts/HelveticaBlack/HelveticaLight.ttf'); /* ֿףעü ך פאיכף סמ רנטפעמל */
+}
+.shopreview-customfields img {
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    box-shadow: 0 0 1px #ABABAB;
+    margin-top: 2px;
+}
+.review-list {
+    font-family: HelveticaLight;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 5px 10px 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    box-shadow: 0 0 5px 3px #F0F0F0;
+}
+.shopreview-customfields {
+    overflow: hidden;
+}
+.review-list h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.review-list ul {
+    list-style: none;
+}
+/*
+.review-list ul.summary-index:first-of-type li.head {
+    border-bottom: 1px solid #e5e5e5;
+}
+*/
+.review-list ul.summary-index {
+	padding-left: 0px;
+}
+.review-list ul.summary-index li.head {
+    border: none;
+}
+.review-list ul.summary-index li {
+    width: 98%;
+    padding: 5px 5px 5px 0px;
+}
+/*
+.review-list .rating-name {
+    font-weight: bold;
+}
+*/
+.review-list .summary-index .rating-empty {
+    float: right;
+    display: block;
+    width: 80px;
+    height: 16px;
+    background: url('/images/star_black.png') 0 -16px;
+    margin-right: 5px;
+}
+
+.review-list .rating-empty { float: right; display: block; width: 80px; height: 16px; background: url('/images/star_black.png') 0 -16px; margin-right: 5px;  }
+.review-list .rating-star-1 { float: left; display: block; width: 16px; height: 16px; background: url('/images/star_black.png') 0 0; margin-right: 5px; }
+.review-list .rating-star-2 { float: left; display: block; width: 32px; height: 16px; background: url('/images/star_black.png') 0 0; margin-right: 5px; }
+.review-list .rating-star-3 { float: left; display: block; width: 48px; height: 16px; background: url('/images/star_black.png') 0 0; margin-right: 5px; }
+.review-list .rating-star-4 { float: left; display: block; width: 64px; height: 16px; background: url('/images/star_black.png') 0 0; margin-right: 5px; }
+.review-list .rating-star-5 { float: left; display: block; width: 80px; height: 16px; background: url('/images/star_black.png') 0 0; margin-right: 5px; }
+.review-comment {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    background: #FFFFFF;
+    border: #e0e0e0 solid 1px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 9px;
+    color: rgb(124, 124, 124);
+}
+
+.review-comment:after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #ffffff transparent;
+
+}
+
+.review-comment:before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #e0e0e0 transparent;
+}
+
+.review-list-item { 
+	margin-left: 0px;
+}
+.shopreview-images {
+    margin-top: 10px;
+}
+.shopreview-images .shopreview-image img {
+    border: 1px solid #e3e3e3;
+    padding: 9px;
+}

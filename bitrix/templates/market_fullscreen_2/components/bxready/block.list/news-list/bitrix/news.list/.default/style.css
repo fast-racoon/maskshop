@@ -1,0 +1,16 @@
+.bxr-list .bxr-list-title {
+    border-bottom: 1px dotted #DDD;
+    margin-bottom: 20px;
+}
+
+.bxr-list .bxr-list-title h2 {
+    border-bottom: none;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.bxr-list .bxr-list-title .bxr-list-title-link {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}

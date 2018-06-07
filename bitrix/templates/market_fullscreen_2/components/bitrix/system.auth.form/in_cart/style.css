@@ -1,0 +1,41 @@
+div.bx-system-auth-form span.bx-auth-secure {background-color:#FFFAE3; border:1px solid #DEDBC8; padding:2px; display:inline-block; vertical-align:bottom; margin-top:-1px;}
+div.bx-system-auth-form div.bx-auth-secure-icon {background-image:url(images/sec.png); background-repeat:no-repeat; background-position:center; width:19px; height:18px;}
+div.bx-system-auth-form div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.png);}
+.auth_uze_zareg {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.auth_in_lk {
+    margin-bottom: 15px;
+    background: #f5f5f5;
+    padding: 15px 8px;
+    font-size: 17px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 106%;
+    margin-left: -3%;
+}
+.auth_name_input {
+    color: #7d7c7c;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.auth_input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.green_btn_ {
+padding: 10px 15px;
+    background: #39b54a;
+    border-radius: 13px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+    float: right;
+    top: -62px;
+    position: relative;
+}

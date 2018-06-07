@@ -1,0 +1,10 @@
+<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+$MESS["OUR_RECOMMEND"] = "Рекомендуем";
+
+$MESS["NEWPRODUCT_BUTTON"] = "Новинки";
+$MESS["SPECIALOFFER_BUTTON"] = "Распродажа";
+$MESS["RECOMMENDED_BUTTON"] = "Выбор покупателей";
+$MESS["SALELEADER_BUTTON"] = "Бестселлеры";
+$MESS["MUST_HAVE_BUTTON"] = "MUST_HAVE";
+$MESS["MONTHHIT_BUTTON"] = "Хиты месяца";
+?>

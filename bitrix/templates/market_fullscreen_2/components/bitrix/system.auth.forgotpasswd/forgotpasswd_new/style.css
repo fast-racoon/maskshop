@@ -1,0 +1,33 @@
+#popup-window-content-Forgotpasswd,
+#bx_auth_popup_form_forgot_password,
+#bx_auth_popup_form_forgot_password_yes,
+#popup-window-content-ForgotPswdYesPopup {
+    margin: 0px;
+}
+.forgot_pswd_txt {
+    text-align: center;
+}
+.forgot_pswd_img {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.forgot_pswd_email {
+	margin-top: 25px;
+	margin-bottom: 15px;
+	border: 2px solid #000 !important;
+}
+.forgot_pswd_submit {
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 7px;
+}
+.forgot_pswd_txt_yes {
+	font-size: 15px;
+    font-weight: bold;
+}

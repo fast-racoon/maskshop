@@ -1,0 +1,36 @@
+/* Left menu*/
+ul.left-menu
+{
+	list-style:none;
+	margin:0; padding:0;
+	margin-bottom:8px;
+	position: relative; /*IE bug*/
+}
+
+ul.left-menu li
+{
+    padding: 10px 10px 10px 20px;
+    background: #f5f4f4;
+    border-top: 5px solid #fff;
+}
+
+ul.left-menu li a
+{
+    font-size: 17px;
+    font-family: Open Sans;
+    color: #262324;
+}
+ul.left-menu li a img
+{
+    margin-right: 15px;
+}
+
+ul.left-menu li.selected,
+ul.left-menu li:hover
+{
+    background: #fff;
+	color:#FC8D3D;
+}
+
+
+

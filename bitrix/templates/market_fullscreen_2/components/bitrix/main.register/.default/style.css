@@ -1,0 +1,91 @@
+/*div.bx-auth-reg input.bx-auth-input {vertical-align:middle;}
+div.bx-auth-reg span.bx-auth-secure {background-color:#FFFAE3; border:1px solid #DEDBC8; padding:2px; display:inline-block; vertical-align:middle;}
+div.bx-auth-reg div.bx-auth-secure-icon {background-image:url(images/sec.png); background-repeat:no-repeat; background-position:center; width:19px; height:18px;}
+div.bx-auth-reg div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.png);}
+*/
+
+.new_auth2{
+    width: 480px;
+    height: 510px;
+    font-family: Open Sans;
+    font-size: 12px;
+    margin: auto;
+    border: solid 2px #000;
+	border-bottom: none;
+    padding: 25px 100px;;
+}
+.new_auth_form2 input[type=text],
+.new_auth_form2 input[type=password],
+.new_auth_form2 input[type=email] {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px 5px;
+    font-weight: bold;
+    border: solid 2px #000;
+    /*text-transform: uppercase;*/
+}
+.new_auth_form2 input[type=submit] {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px 5px;
+    font-weight: bold;
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    border: solid 2px #000;
+    cursor: pointer;
+    margin-top: 25px;
+}
+.new_auth_memory2 {
+    color: #000;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: normal;
+}
+.new_auth_pswd2 {
+    float: right;
+    text-decoration: none;
+    color: #f77066;
+	padding-top: 4px;
+}
+.new_auth_bottom2 {
+    width: 480px;
+    font-family: Open Sans;
+    margin: auto;
+    border-left: solid 2px #000;
+    border-right: solid 2px #000;
+    border-bottom: solid 2px #000;
+    padding: 30px 100px;
+    background: #EFEFF4;
+}
+.new_auth_bottom2 a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+	margin-left: 45px;
+}
+#popup-window-content-RegisterPopup,
+#RegisterPopup {
+    margin: 0;
+}
+.popup-window-close-icon:before {
+	display:none;
+}
+.popup-window-close-icon:after {
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 600px) {
+  .new_auth2,
+  .new_auth_bottom2 {
+		width: 320px !important;
+		padding: 25px 10px !important;
+	}
+  #RegisterPopup {
+	    left: 50% !important;
+    	margin-left: -160px !important;
+	}
+}

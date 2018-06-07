@@ -1,0 +1,16 @@
+.bxr-input-group-btn-menu {
+    position: absolute;
+    right: 10px;
+    right: 14px;
+    top: 4px;
+}
+
+.bxr-input-group-btn-menu > button {
+    padding: 9px 10px 10px;
+    border: none;
+}
+
+
+.bxr-input-group-btn-menu > button:hover {
+    color: #fff;
+}
