@@ -17,7 +17,6 @@ if($arResult["GRID"]["ROWS"] == 0)
 
 
 ?>
-<pre><?print_r($arResult)?></pre>
 <div id="showBlockErrors" style="display:none"></div>
 <div class="bx_ordercart">
 <?/*
@@ -442,7 +441,9 @@ if($arResult["GRID"]["ROWS"] == 0)
 					endif;
 					*/?>
 					<tr>
-						<td class="custom_t1 itog <?=($bUseDiscount?'with_discount' :'')?>" colspan="<?=$colspan?>"><?=GetMessage("SOA_TEMPL_SUM_SUMMARY")?></td>
+						<td class="custom_t1 itog <?=($bUseDiscount?'with_discount' :'')?>" colspan="<?=$colspan?>">
+							<?=GetMessage("SOA_TEMPL_SUM_SUMMARY")?>
+						</td>
 						<?
 						if ($bUseDiscount)
 						{
@@ -454,7 +455,13 @@ if($arResult["GRID"]["ROWS"] == 0)
 						else
 						{
 							?>
-							<td class="custom_t2 price"><?=$arResult["ORDER_PRICE_FORMATED"]?></td>
+							<td class="custom_t2 price">
+
+								<?if($arResult["ORDER_PRICE"] < $arResult["PRICE_WITHOUT_DISCOUNT_VALUE"]):?>
+									<span style="text-decoration:line-through; color:#828282;"><?=$arResult["PRICE_WITHOUT_DISCOUNT"]?></span><br>
+								<?endif;?>
+								<?=$arResult["ORDER_PRICE_FORMATED"]?>
+							</td>
 							<?
 						}
 						?>

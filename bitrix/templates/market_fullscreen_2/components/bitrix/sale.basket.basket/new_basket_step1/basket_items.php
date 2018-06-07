@@ -100,7 +100,6 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 					$tmpCount++;
 					if ($arItem["DELAY"] == "N" && $arItem["CAN_BUY"] == "Y"):
 				?>
-				<!--<pre><?print_r($arItem)?></pre>-->
 				<tr id="<?=$arItem["ID"]?>" <?if($tmpCount == COUNT($arResult["GRID"]["ROWS"])){?>style="border-bottom: none !important;"<?}?>>
 						<td class="margin"></td>
 						<?
@@ -402,7 +401,7 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 			<div class="bx_ordercart_coupon bx_ordercart_coupon-enter">
 				<span>Есть промокод?<?//=GetMessage("STB_COUPON_PROMT")?></span>
 				<div class="ordercart_coupon-enter">
-				<?/*if (!empty($arResult['COUPON_LIST']))
+				<?if (!empty($arResult['COUPON_LIST']))
 				{
 					foreach ($arResult['COUPON_LIST'] as $oneCoupon)
 					{
@@ -417,21 +416,25 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 								$couponClass = 'good';
 								break;
 						}
-						if($couponClass == 'good'){?>
-							<span class="coupon-label-good"><div class="arrow"></div>
-								<?if (isset($oneCoupon['CHECK_CODE_TEXT'])){
-									echo (is_array($oneCoupon['CHECK_CODE_TEXT']) ? implode('<br>', $oneCoupon['CHECK_CODE_TEXT']) : $oneCoupon['CHECK_CODE_TEXT']);
-								}?>
-							</span>
-						<?}
+						if($couponClass == 'good'){
+							$good_coupon["NAME"] = $oneCoupon['COUPON'];
+							$good_coupon["STATUS"] = 'good';
+						}
 						unset($couponClass, $oneCoupon);
 					}
-				}*/?>
-				<input type="text" id="coupon" name="COUPON" value="" placeholder="<?=GetMessage("STB_COUPON_PROMT")?>">
+					if(!$good_coupon){
+						$good_coupon["NAME"] = "Нет подходящего купона";
+						$good_coupon["STATUS"] = 'bad';
+					}
+						
+				}?>
+				<span class="coupon-label-good"></span>
+				<input type="text" id="coupon" name="COUPON" value="<?=$good_coupon["NAME"]?>" placeholder="<?=GetMessage("STB_COUPON_PROMT")?>">
+				<span class="coupon-status <?=$good_coupon["STATUS"]?>"></span>
 				<button class="cupon-enter" onclick="enterCoupon();">Применить</button>
 				</div>
 			</div><?
-				if (!empty($arResult['COUPON_LIST']))
+				/*if (!empty($arResult['COUPON_LIST']))
 				{
 					foreach ($arResult['COUPON_LIST'] as $oneCoupon)
 					{
@@ -460,7 +463,7 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 						</div><?
 					}
 					unset($couponClass, $oneCoupon);
-				}?>
+				}*/?>
 				&nbsp;
 		<?}
 		else

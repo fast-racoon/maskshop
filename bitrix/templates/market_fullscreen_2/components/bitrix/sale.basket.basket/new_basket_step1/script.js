@@ -614,12 +614,33 @@ function couponListUpdate(res)
 		j,
 		key;
 
-	if (!!res && typeof res !== 'object')
+	if (!!res && typeof res !== 'object' || !res)
 	{
 		return;
 	}
 
-	couponBlock = BX('coupons_block');
+	couponBlock = $('#coupons_block');
+	couponBlock.find("input#coupon").val(window.newCoupon);
+
+	for (var i = 0; i < res.COUPON_LIST.length; i++) {
+		if(res.COUPON_LIST[i].COUPON == window.newCoupon && res.COUPON_LIST[i].STATUS != 8){
+			couponBlock.find(".coupon-label-good").html("<div class=\"arrow\"></div>" + res.COUPON_LIST[i].STATUS_TEXT);
+			couponBlock.find(".coupon-label-good").show();
+			couponBlock = null;
+			recalcBasketAjax();
+		}
+	}
+
+
+	//<span class="coupon-label-good"><div class="arrow"></div>применен</span>
+	//couponBlock.find(".coupon-label-good").html("<div class=\"arrow\"></div>");
+	couponBlock = null;
+
+	return true;
+
+
+
+
 	if (!!couponBlock)
 	{
 		if (!!res.COUPON_LIST && BX.type.isArray(res.COUPON_LIST))
