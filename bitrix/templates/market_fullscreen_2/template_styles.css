@@ -260,7 +260,11 @@ input[type="button"]:hover, .social_share:hover, .readmore-js-toggle:hover, #ipo
 	border: none;
 	margin: 3px 0 0 0;
 }
+.menu-phone{
+	display: none;
+}
 .affix .menu-phone{
+	display: block;
 	float: right;
     line-height: 50px;
     height: 50px;
@@ -268,9 +272,7 @@ input[type="button"]:hover, .social_share:hover, .readmore-js-toggle:hover, #ipo
     background: #f44366;
     padding: 0 15px;
 }
-.affix-top .menu-phone{
-	display: none;
-}
+
 /*.search-block{
 	margin-top: 20px;
 }*/

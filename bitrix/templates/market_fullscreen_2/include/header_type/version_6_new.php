@@ -50,7 +50,7 @@ padding-bottom: 0px !important;
                 );?>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 hidden-sm- hidden-xs bxr-v-autosize text-right search-block">
-                <a href="https://shop.giftd.tech/maskshop.ru-2">
+                <a href="https://shop.giftd.tech/maskshop">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512; vertical-align: middle;" xml:space="preserve" width="35px" height="34px">
                         <g>
                             <path d="M235.328,347.328C232.192,350.432,228.096,352,224,352s-8.192-1.568-11.328-4.672c-6.24-6.24-6.24-16.384,0-22.624    L265.376,272H0v128c0,17.664,14.368,32,32,32h256V294.624L235.328,347.328z M176,368H80c-8.832,0-16-7.168-16-16    c0-8.832,7.168-16,16-16h96c8.832,0,16,7.168,16,16C192,360.832,184.832,368,176,368z" fill="#f44366"/>

@@ -17,6 +17,7 @@ if($arResult["GRID"]["ROWS"] == 0)
 
 
 ?>
+<pre><?print_r($arResult)?></pre>
 <div id="showBlockErrors" style="display:none"></div>
 <div class="bx_ordercart">
 <?/*

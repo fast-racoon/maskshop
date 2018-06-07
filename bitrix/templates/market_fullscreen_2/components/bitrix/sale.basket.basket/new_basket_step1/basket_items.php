@@ -20,7 +20,6 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 		$countElBasket++;
 	}
 };?>
-
 <div class="count_cart hidden-lg hidden-md">Товары: <b><?echo $countElBasket;?></b></div>
 <div id="basket_items_list">
 	<div class="bx_ordercart_order_table_container">
@@ -101,6 +100,7 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 					$tmpCount++;
 					if ($arItem["DELAY"] == "N" && $arItem["CAN_BUY"] == "Y"):
 				?>
+				<!--<pre><?print_r($arItem)?></pre>-->
 				<tr id="<?=$arItem["ID"]?>" <?if($tmpCount == COUNT($arResult["GRID"]["ROWS"])){?>style="border-bottom: none !important;"<?}?>>
 						<td class="margin"></td>
 						<?
@@ -329,26 +329,25 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 									<span><?=$arHeader["name"]; ?>:</span>
 									<?=$arItem["WEIGHT_FORMATED"]?>
 								</td>
+
+							<?elseif($arHeader["id"] == "SUM"):?>
+								<td class="custom custom_sum" style="font-weight: bold; vertical-align: middle;">
+									<span style="font-weight: bold !important;">Сумма<?//=$arHeader["name"]; ?>:</span>
+									<?if($arItem["SUM_FULL_PRICE"] > $arItem["SUM_VALUE"]):?>
+										<div class="summ_old_value" id="sum_old_<?=$arItem["ID"]?>">
+											<?=$arItem["SUM_FULL_PRICE_FORMATED"];?>
+										</div>
+									<?endif;?>
+									<div class="summ_value" id="sum_<?=$arItem["ID"]?>">
+										<?=$arItem["SUM"];?>
+									</div>
+								</td>
 							<?
 							else:
 							?>
 								<td class="custom custom_sum" style="font-weight: bold; vertical-align: middle;">
 									<span style="font-weight: bold !important;">Сумма<?//=$arHeader["name"]; ?>:</span>
-									<?
-									if ($arHeader["id"] == "SUM"):
-									?>
-										<div class="summ_value" id="sum_<?=$arItem["ID"]?>">
-									<?
-									endif;
-
-									echo $arItem[$arHeader["id"]];
-
-									if ($arHeader["id"] == "SUM"):
-									?>
-										</div>
-									<?
-									endif;
-									?>
+									<?= $arItem[$arHeader["id"]];?>
 								</td>
 							<?
 							endif;
@@ -400,9 +399,37 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 		if ($arParams["HIDE_COUPON"] != "Y")
 		{
 		?>
-
-			<div class="bx_ordercart_coupon">
-				<span>Есть промокод?<?//=GetMessage("STB_COUPON_PROMT")?></span><input type="text" id="coupon" name="COUPON" value="" onchange="enterCoupon();" placeholder="<?=GetMessage("STB_COUPON_PROMT")?>">
+			<div class="bx_ordercart_coupon bx_ordercart_coupon-enter">
+				<span>Есть промокод?<?//=GetMessage("STB_COUPON_PROMT")?></span>
+				<div class="ordercart_coupon-enter">
+				<?/*if (!empty($arResult['COUPON_LIST']))
+				{
+					foreach ($arResult['COUPON_LIST'] as $oneCoupon)
+					{
+						$couponClass = 'disabled';
+						switch ($oneCoupon['STATUS'])
+						{
+							case DiscountCouponsManager::STATUS_NOT_FOUND:
+							case DiscountCouponsManager::STATUS_FREEZE:
+								$couponClass = 'bad';
+								break;
+							case DiscountCouponsManager::STATUS_APPLYED:
+								$couponClass = 'good';
+								break;
+						}
+						if($couponClass == 'good'){?>
+							<span class="coupon-label-good"><div class="arrow"></div>
+								<?if (isset($oneCoupon['CHECK_CODE_TEXT'])){
+									echo (is_array($oneCoupon['CHECK_CODE_TEXT']) ? implode('<br>', $oneCoupon['CHECK_CODE_TEXT']) : $oneCoupon['CHECK_CODE_TEXT']);
+								}?>
+							</span>
+						<?}
+						unset($couponClass, $oneCoupon);
+					}
+				}*/?>
+				<input type="text" id="coupon" name="COUPON" value="" placeholder="<?=GetMessage("STB_COUPON_PROMT")?>">
+				<button class="cupon-enter" onclick="enterCoupon();">Применить</button>
+				</div>
 			</div><?
 				if (!empty($arResult['COUPON_LIST']))
 				{
@@ -419,12 +446,18 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 								$couponClass = 'good';
 								break;
 						}
-						?><div class="bx_ordercart_coupon"><input disabled readonly type="text" name="OLD_COUPON[]" value="<?=htmlspecialcharsbx($oneCoupon['COUPON']);?>" class="<? echo $couponClass; ?>"><span class="<? echo $couponClass; ?>" data-coupon="<? echo htmlspecialcharsbx($oneCoupon['COUPON']); ?>"></span><div class="bx_ordercart_coupon_notes"><?
-						if (isset($oneCoupon['CHECK_CODE_TEXT']))
-						{
-							echo (is_array($oneCoupon['CHECK_CODE_TEXT']) ? implode('<br>', $oneCoupon['CHECK_CODE_TEXT']) : $oneCoupon['CHECK_CODE_TEXT']);
-						}
-						?></div></div><?
+						?><div class="bx_ordercart_coupon <? echo $couponClass; ?>">
+							<input disabled readonly type="text" name="OLD_COUPON[]" value="<?=htmlspecialcharsbx($oneCoupon['COUPON']);?>" 
+									class="coupon-input <? echo $couponClass; ?>">
+							<span class="coupon-status <? echo $couponClass; ?>" data-coupon="<? echo htmlspecialcharsbx($oneCoupon['COUPON']); ?>" onclick="deleteCoupon();"></span>
+							<div class="bx_ordercart_coupon_notes"><?
+								if (isset($oneCoupon['CHECK_CODE_TEXT']))
+								{
+									echo (is_array($oneCoupon['CHECK_CODE_TEXT']) ? implode('<br>', $oneCoupon['CHECK_CODE_TEXT']) : $oneCoupon['CHECK_CODE_TEXT']);
+								}
+								?>
+							</div>
+						</div><?
 					}
 					unset($couponClass, $oneCoupon);
 				}?>
@@ -468,18 +501,18 @@ foreach ($arResult["GRID"]["ROWS"] as $k => $arItem)
 					<tr>
 					</tr>
 					<tr class="hidden" style="clear:both;">
-<td class="fwb points points_txt"><span>Скидка</span></td>
-<td id="DISCOUNT_PRICE_ALL_FORMATED" class="fwb points_txt"><?=str_replace(" ", "&nbsp;", $arResult["DISCOUNT_PRICE_ALL_FORMATED"])?></td>
-<?
-/*
-if ($USER->IsAdmin())
-{
-	echo "<pre>";
-	print_r($arResult);
-	echo "</pre>";
-}
-*/
-?>
+						<td class="fwb points points_txt"><span>Скидка</span></td>
+						<td id="DISCOUNT_PRICE_ALL_FORMATED" class="fwb points_txt"><?=str_replace(" ", "&nbsp;", $arResult["DISCOUNT_PRICE_ALL_FORMATED"])?></td>
+						<?
+						/*
+						if ($USER->IsAdmin())
+						{
+							echo "<pre>";
+							print_r($arResult);
+							echo "</pre>";
+						}
+						*/
+						?>
 					</tr>
 					<tr>
 						<td class="custom_t1 hidden-sm hidden-xs"></td>

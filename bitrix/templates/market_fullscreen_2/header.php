@@ -87,6 +87,8 @@ $noIndexArr = [
 	'/brands/holika-holika/tonery/',
 	'/brands/holika-holika/ukhod-za-volosami/',
 	'/brands/holika-holika/mitsellyarnaya-voda/',
+	'/brands/tony-moly/petitfee/',
+	'/blog/karboksiterapiya-ahttp:/www.uaua.info/planirovaniye-semji/oslozhnenia-beremennosti/article-9838-beremennost-i-vich/',
 ];
 
 ?>

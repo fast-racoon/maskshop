@@ -659,14 +659,34 @@ function couponListUpdate(res)
 						else if (res.COUPON_LIST[i].JS_STATUS === 'APPLYED')
 							couponClass = 'good';
 
-						BX.adjust(couponsCollection[key], {props: {className: couponClass}});
+						BX.adjust(couponsCollection[key], {props: {className: "coupon-input "+couponClass}});
 						BX.adjust(couponsCollection[key].nextSibling, {props: {className: couponClass}});
-						BX.adjust(couponsCollection[key].nextSibling.nextSibling, {html: res.COUPON_LIST[i].JS_CHECK_CODE});
+						//BX.adjust(couponsCollection[key].nextSibling.nextSibling, {html: res.COUPON_LIST[i].JS_CHECK_CODE});
 					}
 					else
 					{
-						couponCreate(couponBlock, res.COUPON_LIST[i]);
+						//couponCreate(couponBlock, res.COUPON_LIST[i]);
+						/*if(res.COUPON_LIST[i].JS_STATUS == "APPLYED"){
+							if($(couponBlock).find(".coupon-label-good").length == 0){
+								$(couponBlock).find(".ordercart_coupon-enter input").before("<span class=\"coupon-label-good\"><div class=\"arrow\"></div>"+res.COUPON_LIST[i].CHECK_CODE_TEXT[0]+"</span>");
+							}
+						}
+						console.log(res.COUPON_LIST[i]);*/
 					}
+				}
+				if(res.COUPON_LIST.length > 0){
+					for (var i = 0; i < res.COUPON_LIST.length; i++) {
+						if(res.COUPON_LIST[i].COUPON == window.newCoupon){
+							if($(".bx_ordercart_coupon-enter").find(".coupon-label-good").length == 0){
+								$(".bx_ordercart_coupon-enter").find(".ordercart_coupon-enter input").before("<span class=\"coupon-label-good\"><div class=\"arrow\"></div>"+res.COUPON_LIST[i].CHECK_CODE_TEXT[0]+"</span>");
+							}else{
+								$(".bx_ordercart_coupon-enter").find(".coupon-label-good").html("<div class=\"arrow\"></div>"+res.COUPON_LIST[i].CHECK_CODE_TEXT[0]);
+							}
+						}
+					}
+
+
+					
 				}
 				for (j = 0; j < couponsCollection.length; j++)
 				{
@@ -836,6 +856,7 @@ function checkOut()
 function enterCoupon()
 {
 	var newCoupon = BX('coupon');
+	window.newCoupon = newCoupon.value;
 	if (!!newCoupon && !!newCoupon.value)
 		recalcBasketAjax({'coupon' : newCoupon.value});
 }
@@ -1157,4 +1178,11 @@ BX.ready(function() {
 	//делаем одинаковой высоту блоков
 	var height_right_block = document.getElementById('sum_left_block').clientHeight;
 	document.getElementById('sum_right_block').style.height=height_right_block+"px";
+});
+$(document).ready(function(){
+	$("#order_form_div").on("input","#coupon", function(e){
+		e.preventDefault();
+		if(!$(".cupon-enter").hasClass("active"))
+			$(".cupon-enter").addClass("active").show(600);
+	});
 });
